@@ -101,18 +101,28 @@ int main(void) {
 #if DRAWLINE == 1
 	Mat img1(400, 400, CV_8UC3, Scalar(255, 255, 255));
 
-	line(img1, Point(50, 50), Point(200, 50), Scalar(0, 0, 255));	// 50,50 -> 200,50 으로 색깔 빨간색 줄	
-	line(img1, Point(100, 140), Point(400, 140), Scalar(0, 0, 0), 1, 8, 1); // shift가 1이니 좌표값을 반절로, 50,70 -> 200,70 으로 검정색 줄
-	line(img1, Point(50, 100), Point(200, 100), Scalar(255, 0, 255), 3);	// 50,100 -> 200,100 으로 색깔 보라색, 두께 3
-	line(img1, Point(50, 150), Point(200, 150), Scalar(255, 0, 0), 10);	// 50,150 -> 200,150 으로 색깔 파란색, 두께 10
+	// 50,50 -> 200,50 으로 색깔 빨간색 줄
+	line(img1, Point(50, 50), Point(200, 50), Scalar(0, 0, 255));		
+	// shift가 1이니 좌표값을 반절로, 50,70 -> 200,70 으로 검정색 줄
+	line(img1, Point(100, 140), Point(400, 140), Scalar(0, 0, 0), 1, 8, 1); 
+	// 50,100 -> 200,100 으로 색깔 보라색, 두께 3
+	line(img1, Point(50, 100), Point(200, 100), Scalar(255, 0, 255), 3);	
+	// 50,150 -> 200,150 으로 색깔 파란색, 두께 10
+	line(img1, Point(50, 150), Point(200, 150), Scalar(255, 0, 0), 10);	
 
-	line(img1, Point(250, 50), Point(350, 100), Scalar(0, 0, 255), 1, LINE_4);	// 250,50 -> 350,100 으로 색깔 빨간색 줄, 두께 1, LINE_4 방법
-	line(img1, Point(250, 70), Point(350, 120), Scalar(255, 0, 255), 1, LINE_8);	// 250,70 -> 350,120 으로 색깔 보라색, 두께 1, LINE_8 방법
-	line(img1, Point(250, 90), Point(350, 140), Scalar(255, 0, 0), 1, LINE_AA);	// 250,90 -> 350,140 으로 색깔 파란색, 두께 1, 안티엘리어싱 방법
+	// 250,50 -> 350,100 으로 색깔 빨간색 줄, 두께 1, LINE_4 방법
+	line(img1, Point(250, 50), Point(350, 100), Scalar(0, 0, 255), 1, LINE_4);
+	// 250,70 -> 350,120 으로 색깔 보라색, 두께 1, LINE_8 방법
+	line(img1, Point(250, 70), Point(350, 120), Scalar(255, 0, 255), 1, LINE_8);
+	// 250,90 -> 350,140 으로 색깔 파란색, 두께 1, 안티엘리어싱 방법
+	line(img1, Point(250, 90), Point(350, 140), Scalar(255, 0, 0), 1, LINE_AA);
 
-	arrowedLine(img1, Point(50, 200), Point(150, 200), Scalar(0, 0, 255), 1);	// 50,200 -> 150,200 으로 색깔 빨간색, 두께 1, 화살표 0.1 비율
-	arrowedLine(img1, Point(50, 250), Point(350, 250), Scalar(255, 0, 255), 1);	// 50,250 -> 350,250 으로 색깔 보라색, 두께 1, 화살표 0.1 비율
-	arrowedLine(img1, Point(50, 300), Point(350, 300), Scalar(255, 0, 0), 1, LINE_8, 0, 0.05);	//50,300 -> 350,300 으로 색깔 파란색, 두께 1, LINE_8 방법, 쉬프트 0, 화살표 0.05 비율
+	// 50,200 -> 150,200 으로 색깔 빨간색, 두께 1, 화살표 0.1 비율
+	arrowedLine(img1, Point(50, 200), Point(150, 200), Scalar(0, 0, 255), 1);	
+	// 50,250 -> 350,250 으로 색깔 보라색, 두께 1, 화살표 0.1 비율
+	arrowedLine(img1, Point(50, 250), Point(350, 250), Scalar(255, 0, 255), 1);	
+	//50,300 -> 350,300 으로 색깔 파란색, 두께 1, LINE_8 방법, 쉬프트 0, 화살표 0.05 비율
+	arrowedLine(img1, Point(50, 300), Point(350, 300), Scalar(255, 0, 0), 1, LINE_8, 0, 0.05);	
 
 	drawMarker(img1, Point(50, 350), Scalar(0, 0, 255), MARKER_CROSS);	// 50,350에 빨간색 십자가
 	drawMarker(img1, Point(100, 350), Scalar(0, 0, 255), MARKER_TILTED_CROSS);	// 100,350에 빨간색 회전 십자가
@@ -129,15 +139,21 @@ int main(void) {
 #if DRAWSHAPE == 1
 	Mat img2(400, 400, CV_8UC3, Scalar(255, 255, 255));
 
-	rectangle(img2, Rect(50, 50, 100, 50), Scalar(0, 0, 255), 2);	// 50,50 에서 100x50크기로 두께 2 빨간색 사각형
-	rectangle(img2, Rect(50, 150, 100, 50), Scalar(0, 0, 128), -1);	// 50,150 에서 100x50크기로 내부 꽉찬 진한 빨간색 사각형
+	// 50,50 에서 100x50크기로 두께 2 빨간색 사각형
+	rectangle(img2, Rect(50, 50, 100, 50), Scalar(0, 0, 255), 2);	
+	// 50,150 에서 100x50크기로 내부 꽉찬 진한 빨간색 사각형
+	rectangle(img2, Rect(50, 150, 100, 50), Scalar(0, 0, 128), -1);	
 
-	circle(img2, Point(300, 120), 30, Scalar(255, 255, 0), -1, LINE_AA);	// 300,120 중심, 반지름 30 짜리 민트색 속 꽉찬 원
-	circle(img2, Point(300, 120), 60, Scalar(255, 0, 0), 3, LINE_AA);	//300,120 중심, 반지름 60 짜리 두께 3 파란색 원
+	// 300,120 중심, 반지름 30 짜리 민트색 속 꽉찬 원
+	circle(img2, Point(300, 120), 30, Scalar(255, 255, 0), -1, LINE_AA);
+	//300,120 중심, 반지름 60 짜리 두께 3 파란색 원
+	circle(img2, Point(300, 120), 60, Scalar(255, 0, 0), 3, LINE_AA);	
 
 	//타원 그리기 시작은 중심으로 +x 축 방향부터
-	ellipse(img2, Point(120, 300), Size(60, 30), 20, 0, 270, Scalar(255, 255, 0), -1, LINE_AA);	// 120,300 중심 x축 반지름 60, y축 반지름 30, 회전 각도 20, 0 ~ 270도 민트색 속 꽉찬 타원
-	ellipse(img2, Point(120, 300), Size(100, 50), 20, 0, 360, Scalar(0, 255, 0), 2, LINE_AA);	// 120,300 중심 x축 반지름 100, y축 반지름 50, 회전 각도 20, 0 ~ 360도 초록색 두께 2 타원
+	// 120,300 중심 x축 반지름 60, y축 반지름 30, 회전 각도 20, 0 ~ 270도 민트색 속 꽉찬 타원
+	ellipse(img2, Point(120, 300), Size(60, 30), 20, 0, 270, Scalar(255, 255, 0), -1, LINE_AA);	
+	// 120,300 중심 x축 반지름 100, y축 반지름 50, 회전 각도 20, 0 ~ 360도 초록색 두께 2 타원
+	ellipse(img2, Point(120, 300), Size(100, 50), 20, 0, 360, Scalar(0, 255, 0), 2, LINE_AA);	
 
 	vector<Point> pts;
 	pts.push_back(Point(250, 250)); 	pts.push_back(Point(300, 250)); 	pts.push_back(Point(300, 300));
@@ -162,7 +178,8 @@ int main(void) {
 	Point org((sizeImg.width - sizeText.width) / 2, (sizeImg.height + sizeText.height) / 2);	// 텍스트를 위치시킬 왼쪽 아래 좌표를 구함
 
 	putText(img3, text, org, fontFace, fontScale, Scalar(255, 0, 0), thickness);
-	rectangle(img3, org, org + Point(sizeText.width, -sizeText.height), Scalar(255, 0, 0), 1);	// org가 텍스트의 왼쪽 아래 좌표이기 때문에 width는 더하고 heigth는 빼서 좌표를 정한다.
+	// org가 텍스트의 왼쪽 아래 좌표이기 때문에 width는 더하고 heigth는 빼서 좌표를 정한다.
+	rectangle(img3, org, org + Point(sizeText.width, -sizeText.height), Scalar(255, 0, 0), 1);
 
 	imshow("img3", img3);
 	waitKey();

@@ -32,6 +32,8 @@ void mask_copyTo() {
 	src.copyTo(dst, mask);	// src에서 mask에 해당되는 부분만 dst에 복사. 나머지는 유지
 
 	imshow("dst", dst);
+	imshow("mask", mask);
+	imshow("src", src);
 	waitKey();
 	destroyAllWindows();
 	return;
@@ -53,10 +55,14 @@ void time_inverse() {
 	return;
 }
 void sum_mean() {
-	Mat src = imread("../src/lenna.bmp", IMREAD_COLOR);
+	Mat src1 = imread("../src/lenna.bmp", IMREAD_COLOR);
+	Mat src2 = imread("../src/lenna.bmp", IMREAD_GRAYSCALE);
 	
-	cout << "Sum: " << sum(src)<< endl;
-	cout << "Mean: " << mean(src) << endl;
+	cout << "Sum: " << sum(src1)<< endl;
+	cout << "Mean: " << mean(src1) << endl;
+
+	cout << "Sum: " << sum(src2) << endl;
+	cout << "Mean: " << mean(src2) << endl;
 	return;
 }
 void minMax() {

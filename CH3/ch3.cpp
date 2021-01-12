@@ -33,8 +33,10 @@ int main(void) {
 	cout << "pt2: " << pt2 << endl;
 	Point pt3 = pt1 + pt2;	// 5+10, 10+20
 	cout << "pt3: " << pt3 << endl;
-	Point pt4 = pt1 * 2;	// 5*2, 10*2
+	Point pt4 = pt1 - pt2;	// 5-10, 10-20
 	cout << "pt4: " << pt4 << endl;
+	Point pt5 = pt1 * 2;	// 5*2, 10*2
+	cout << "pt5: " << pt5 << endl;
 	int d1 = pt1.dot(pt2); // 5*10 + 10*20, dot product
 	cout << "pt1 * pt2: " << d1 << endl;
 	bool b1 = (pt1 == pt2);	// comparison
@@ -55,7 +57,7 @@ int main(void) {
 	int area = s1.area(); // 5 * 10 = 50
 	cout << "s1 area: " << area << endl;
 	Size s1_copy(5, 10);	// init same to s1
-	bool b2 = (s1 == s1);	// comparison
+	bool b2 = (s1 == s1_copy);	// comparison
 	cout << "s1 == s1_cp: " << b2 << endl << endl;
 
 #endif
@@ -97,7 +99,8 @@ int main(void) {
 	Rect2f boundRcf = rr1.boundingRect2f();
 	cout << "boundRcf: " << boundRcf << endl;	//만약 실수형을 원하면 boundingRect2f()사용
 
-	RotatedRect rr2(Point2f(0, 0), Point2f(10, 0), Point2f(10, 10));	// 3개의 점으로 생성하기 위해서는 시계방향을 지켜야한다. 안 그러면 런타임 에러
+	RotatedRect rr2(Point2f(0, 0), Point2f(10, 0), Point2f(10, 10));	
+	// 3개의 점으로 생성하기 위해서는 시계방향을 지켜야한다. 안 그러면 런타임 에러
 	rr2.points(pts);
 	cout << "pts: ";
 	for (Point2f p : pts)
@@ -119,7 +122,8 @@ int main(void) {
 #if MAT == 1
 	Mat img1(480, 640, CV_8UC1);	// 640 x 480, unsigned char 1-channel
 	Mat img2(480, 640, CV_8UC3);	// 640 x 480, unsinged char 3-channels
-	Mat img3(Size(640, 480), CV_8UC3);	// Size는 가로, 세로로 입력, Mat은 세로, 가로로 입력, 위의 3개는 초기화가 쓰레기 값으로 초기화
+	Mat img3(Size(640, 480), CV_8UC3);	
+	// Size는 가로, 세로로 입력, Mat은 세로, 가로로 입력, 위의 3개는 초기화가 쓰레기 값으로 초기화
 
 	Mat img4(480, 640, CV_8UC1, Scalar(128));	// 640 x 480, 초기값 128
 	Mat img4(480, 640, CV_8UC3, Scalar(0, 0, 255));	// 640 x 480, 초기값 0,0,255
@@ -139,7 +143,8 @@ int main(void) {
 	Mat mat6 = (Mat_<float>(2, 3) << 1, 2, 3, 4, 5, 6);	// 이것도 위와 동일
 	Mat mat7 = Mat_<float>({ 2,3 }, { 1,2,3,4,5,6 });	// 이것도 위와 동일
 
-	mat4.create(256, 256, CV_8UC3);	// 이미 생성된 mat 변수를 새롭게 초기화할 때, 만약 타입과 크기가 똑같으면 그대로 함수 종료.
+	mat4.create(256, 256, CV_8UC3);	
+	// 이미 생성된 mat 변수를 새롭게 초기화할 때, 만약 타입과 크기가 똑같으면 그대로 함수 종료.
 	mat5.create(4, 4, CV_32FC1);
 
 	mat4 = Scalar(255, 0, 0);	// 새롭게 모든 원소에 value 

@@ -16,9 +16,12 @@ int main(void) {
 	namedWindow("img1");
 	imshow("img1", img1);
 	while (true) {
-		int keyCode = waitKey();	// waitKey()로 키보드 입력 처리, 만약 F1 ~ F12, 방향키까지 하기 위해서는 waitKeyEx() 사용
-		if (keyCode == 'i' || keyCode == 'I')
+		// waitKey()로 키보드 입력 처리, 만약 F1 ~ F12, 방향키까지 하기 위해서는 waitKeyEx() 사용
+		int keyCode = waitKey();	
+		if (keyCode == 'i' || keyCode == 'I') {
 			img1 = ~img1;
+			cout << "Press i" << endl;
+		}
 		else if (keyCode == 'q' || keyCode == 'Q' || keyCode == 27)
 			break;
 		imshow("img1", img1);

@@ -6,6 +6,7 @@ using namespace std;
 
 #define DATAOUT 0
 #define DATAIN 1
+
 String filename = "mydata.json";
 
 int main(void) {
