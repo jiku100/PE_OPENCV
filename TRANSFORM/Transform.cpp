@@ -8,8 +8,11 @@ using namespace cv;
 #define SHEAR 0
 #define SCALE 0
 #define ROTATE 0
-#define FLIP 1
+#define FLIP 0
+#define PERSPECTIVE 1
 
+Mat src;
+Point2f srcQuad[4], dstQuad[4];
 void affine_transform() {
 	Mat src = imread("../src/tekapo.bmp");
 	Point2f srcPts[3], dstPts[3];
@@ -107,6 +110,36 @@ void affine_flip() {
 	destroyAllWindows();
 	return;
 }
+void on_mouse(int event, int x, int y, int flags, void* userdata) {
+	static int cnt = 0;
+	if (event == EVENT_LBUTTONDOWN) {
+		if (cnt < 4) {
+			srcQuad[cnt++] = Point2f(x, y);
+			circle(src, Point(x, y), 5, Scalar(0, 0, 255), -1);
+			imshow("src", src);
+			if (cnt == 4) {
+				int w = 200, h = 300;
+				dstQuad[0] = Point2f(0, 0);
+				dstQuad[1] = Point2f(w - 1, 0);
+				dstQuad[2] = Point2f(w - 1, h - 1);
+				dstQuad[3] = Point2f(0, h - 1);
+				Mat pers = getPerspectiveTransform(srcQuad, dstQuad);
+				Mat dst;
+				warpPerspective(src, dst, pers, Size(w, h));
+				imshow("dst", dst);
+			}
+		}
+	}	
+}
+void perspective() {
+	src = imread("../src/card.bmp");
+	namedWindow("src");
+	setMouseCallback("src", on_mouse);
+	imshow("src", src);
+	waitKey();
+	destroyAllWindows();
+	return;
+}
 
 int main(void) {
 #if TRANSFORM == 1
@@ -126,5 +159,8 @@ int main(void) {
 #endif
 #if FLIP == 1
 	affine_flip();
+#endif
+#if PERSPECTIVE == 1
+	perspective();
 #endif
 }
