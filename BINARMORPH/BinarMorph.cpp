@@ -6,7 +6,8 @@ using namespace cv;
 #define THRESHOLD 0
 #define ADAPTIVE 0
 #define ERODEDILATE 0
-#define OPENCLOSE 1
+#define OPENCLOSE 0
+#define GRADCANNY 1
 
 void on_threshold(int pos, void* userdata) {
 	Mat src = *(Mat*)userdata;
@@ -90,6 +91,21 @@ void open_close() {
 	waitKey();
 	destroyAllWindows();
 }
+
+void gradient_canny() {
+	Mat src = imread("../src/milkdrop.bmp", IMREAD_GRAYSCALE);
+	Mat bin;
+	threshold(src, bin, 0, 255, THRESH_BINARY | THRESH_OTSU);
+	Mat dst1, dst2;
+	morphologyEx(bin, dst1, MORPH_GRADIENT, Mat());
+	Canny(bin, dst2, 50, 150);
+	imshow("src", src);
+	imshow("bin", bin);
+	imshow("gradient", dst1);
+	imshow("canny", dst2);
+	waitKey();
+	destroyAllWindows();
+}
 int main(void) {
 #if THRESHOLD == 1
 	threshold();
@@ -102,5 +118,8 @@ int main(void) {
 #endif
 #if OPENCLOSE == 1
 	open_close();
+#endif
+#if GRADCANNY == 1
+	gradient_canny();
 #endif
 }
